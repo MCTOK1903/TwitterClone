@@ -32,10 +32,10 @@ class MainTabController: UITabBarController {
         let exploreNavigation = templateNavigationController(image: UIImage(named: "search_unselected"), rootViewController: explore)
         
         let notifications = NotificationsContoller()
-        let notificationNavigation = templateNavigationController(image: UIImage(named: "search_unselected"), rootViewController: notifications)
+        let notificationNavigation = templateNavigationController(image: UIImage(named: "like_unselected"), rootViewController: notifications)
         
         let conversations = ConversationContoller()
-        let conversationsNavigation = templateNavigationController(image: UIImage(named: "search_unselected"), rootViewController: conversations)
+        let conversationsNavigation = templateNavigationController(image: UIImage(named: "ic_mail_outline_white_2x-1"), rootViewController: conversations)
          
         viewControllers = [feedNavigation,exploreNavigation,notificationNavigation,conversationsNavigation]
         
@@ -48,7 +48,6 @@ class MainTabController: UITabBarController {
             nav.tabBarItem.image = image
             nav.navigationBar.barTintColor = .white
             return nav
-        
     }
        
     
