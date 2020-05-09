@@ -10,7 +10,9 @@ import UIKit
 
 class RegisterController: UIViewController{
     
-    //MARK: -Properties
+    //MARK: - Properties
+    
+    private let imagePicker = UIImagePickerController()
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -89,23 +91,29 @@ class RegisterController: UIViewController{
     
     
     
-    //MARK: -lifeCycle
+    //MARK: - lifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
         
         configureUI()
     }
     
     
     
-    //MARK: -Selectors
+    //MARK: - Selectors
     
     @objc func alreadyHaveAccountTapped(){
         navigationController?.pushViewController(LoginController(), animated: true)
     }
     
     @objc func plusPhotoTapped(){
+        
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
         
     }
     
@@ -115,7 +123,7 @@ class RegisterController: UIViewController{
     
     
     
-    //MARK: -Helpers
+    //MARK: - ConfigureUI
     
     func configureUI(){
         view.backgroundColor = .twitterBlue
@@ -140,5 +148,27 @@ class RegisterController: UIViewController{
     }
     
     
+}
+
+//MARK: - UIImagePickerControllerDelegate extension
+
+extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let profileImage = info[.originalImage] as? UIImage else {return}
+        
+        // set the radius of the photo
+        plusPhotoButton.layer.cornerRadius = 128/2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.imageView?.contentMode = .scaleAspectFill
+        plusPhotoButton.imageView?.clipsToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.borderWidth = 3
+        
+        self.plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.dismiss(animated: true, completion: nil)
+    }
+
     
 }
