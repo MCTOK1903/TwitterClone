@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000E843A24664FE900E013EC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E843924664FE900E013EC /* LoginController.swift */; };
+		000E843C2466509400E013EC /* RegisterCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000E843B2466509400E013EC /* RegisterCotroller.swift */; };
 		002903052461EF3F00561413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002903042461EF3F00561413 /* AppDelegate.swift */; };
 		002903072461EF3F00561413 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002903062461EF3F00561413 /* SceneDelegate.swift */; };
 		0029030C2461EF3F00561413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0029030A2461EF3F00561413 /* Main.storyboard */; };
@@ -17,9 +19,12 @@
 		00CA08162461FA6E004B74AC /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA08152461FA6E004B74AC /* ExploreController.swift */; };
 		00CA08182461FA86004B74AC /* NotificationsContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA08172461FA86004B74AC /* NotificationsContoller.swift */; };
 		00CA081A2461FAE8004B74AC /* ConversationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA08192461FAE8004B74AC /* ConversationContoller.swift */; };
+		00CA081E24624D1B004B74AC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA081D24624D1B004B74AC /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000E843924664FE900E013EC /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		000E843B2466509400E013EC /* RegisterCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCotroller.swift; sourceTree = "<group>"; };
 		002903012461EF3F00561413 /* TwitterClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		002903042461EF3F00561413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		002903062461EF3F00561413 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 		00CA08152461FA6E004B74AC /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		00CA08172461FA86004B74AC /* NotificationsContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsContoller.swift; sourceTree = "<group>"; };
 		00CA08192461FAE8004B74AC /* ConversationContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationContoller.swift; sourceTree = "<group>"; };
+		00CA081D24624D1B004B74AC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000E843824664FAD00E013EC /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				000E843924664FE900E013EC /* LoginController.swift */,
+				000E843B2466509400E013EC /* RegisterCotroller.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		002902F82461EF3F00561413 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +98,7 @@
 		002903182461F50C00561413 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				00CA081D24624D1B004B74AC /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -97,6 +113,7 @@
 		0029031A2461F54800561413 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				000E843824664FAD00E013EC /* Authentication */,
 				00CA08112461F892004B74AC /* MainTabController.swift */,
 				00CA08132461FA5E004B74AC /* FeedController.swift */,
 				00CA08152461FA6E004B74AC /* ExploreController.swift */,
@@ -201,8 +218,11 @@
 				002903052461EF3F00561413 /* AppDelegate.swift in Sources */,
 				00CA081A2461FAE8004B74AC /* ConversationContoller.swift in Sources */,
 				00CA08182461FA86004B74AC /* NotificationsContoller.swift in Sources */,
+				00CA081E24624D1B004B74AC /* Extensions.swift in Sources */,
+				000E843A24664FE900E013EC /* LoginController.swift in Sources */,
 				00CA08162461FA6E004B74AC /* ExploreController.swift in Sources */,
 				002903072461EF3F00561413 /* SceneDelegate.swift in Sources */,
+				000E843C2466509400E013EC /* RegisterCotroller.swift in Sources */,
 				00CA08122461F892004B74AC /* MainTabController.swift in Sources */,
 				00CA08142461FA5E004B74AC /* FeedController.swift in Sources */,
 			);
