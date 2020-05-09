@@ -77,8 +77,9 @@ class LoginController: UIViewController{
         
     }
     
+    // showUp Sign in
     @objc func dontHaveAccountButtonTapped(){
-        
+        navigationController?.pushViewController(RegisterController(), animated: true)
     }
     
     
@@ -102,7 +103,7 @@ class LoginController: UIViewController{
         
         view.addSubview(stack)
         stack.anchor(top: logoImageView.bottomAnchor,left: view.leftAnchor,right: view.rightAnchor,
-                     paddingLeft: 16, paddingRight: 16)
+                     paddingLeft: 32, paddingRight: 16)
         
          
         view.addSubview(dontHaveAccountButton)
