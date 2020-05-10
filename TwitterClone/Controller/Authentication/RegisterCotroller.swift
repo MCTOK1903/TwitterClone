@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterController: UIViewController{
     
     //MARK: - Properties
     
     private let imagePicker = UIImagePickerController()
+    private var profileImage : UIImage?
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -74,6 +76,7 @@ class RegisterController: UIViewController{
     
     private let passwordTextField: UITextField = {
         let tf = Utilities().createTextField(withPlaceHolder: "Password")
+        tf.isSecureTextEntry = true
         return tf
     }()
     
@@ -118,6 +121,48 @@ class RegisterController: UIViewController{
     }
     
     @objc func SignUpTapped(){
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let fullname = fullNameTextField.text else {return}
+        guard let username = userNameTextField.text else {return}
+        
+        guard let imageData = profileImage?.jpegData(compressionQuality: 0.3) else {return}
+        let imageDataName = UUID().uuidString
+        let storeRef = STORE_PROFILE_IMAGES.child(imageDataName)
+        
+        //MARK:  upload image to FirebaseStore
+        storeRef.putData(imageData, metadata: nil) { (metadata, error) in
+            storeRef.downloadURL { (url, error) in
+                guard let profileImageUrl = url?.absoluteString else {return}
+                
+                Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+                    if let err = err {
+                        print("\(err.localizedDescription)")
+                        return
+                    }
+                    guard let uid = result?.user.uid else {return}
+                    
+                    //MARK:  upload userInfo to database
+                    let userValue = ["email":email,
+                                     "username":username,
+                                     "fullname":fullname,
+                                     "profileImageUrl":profileImageUrl]
+                    
+                    REF_USERS.child(uid).updateChildValues(userValue) { (error, ref) in
+                        if error != nil {
+                            return
+                        }
+                        print("success")
+                    }
+                    
+                }
+                
+                
+            }
+        }
+        
+        
+        
         
     }
     
@@ -157,6 +202,7 @@ extension RegisterController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let profileImage = info[.originalImage] as? UIImage else {return}
+        self.profileImage = profileImage
         
         // set the radius of the photo
         plusPhotoButton.layer.cornerRadius = 128/2
@@ -169,6 +215,6 @@ extension RegisterController: UIImagePickerControllerDelegate, UINavigationContr
         self.plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     
 }
