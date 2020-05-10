@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabController: UITabBarController {
     
@@ -25,10 +26,22 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPink
+        x()
+        
         configureViewContoller()
         configureUI()
     }
+    
+    //MARK: - !!!
+    func x(){
+        
+        do {
+            try Auth.auth().signOut()
+        }catch let error{
+            print(error)
+        }
+    }
+
     
     
     //MARK: - addNewTweet Button Action 

@@ -74,7 +74,15 @@ class LoginController: UIViewController{
     //MARK: -Selectors
     
     @objc func loginTapped(){
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
         
+        AuthService.shared.logUserIn(email: email, password: password) { (result, error) in
+            if let error = error {
+                print(error.localizedDescription ?? "eroor")
+            }
+            self.navigationController?.pushViewController(MainTabController(), animated: true)
+        }
     }
     
     // showUp Sign in
@@ -103,7 +111,7 @@ class LoginController: UIViewController{
         
         view.addSubview(stack)
         stack.anchor(top: logoImageView.bottomAnchor,left: view.leftAnchor,right: view.rightAnchor,
-                     paddingLeft: 32, paddingRight: 16)
+                     paddingLeft: 32, paddingRight: 32)
         
          
         view.addSubview(dontHaveAccountButton)
