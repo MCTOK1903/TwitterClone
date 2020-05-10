@@ -121,44 +121,16 @@ class RegisterController: UIViewController{
     }
     
     @objc func SignUpTapped(){
+        guard let profileImage = profileImage else {return}
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let fullname = fullNameTextField.text else {return}
         guard let username = userNameTextField.text else {return}
         
-        guard let imageData = profileImage?.jpegData(compressionQuality: 0.3) else {return}
-        let imageDataName = UUID().uuidString
-        let storeRef = STORE_PROFILE_IMAGES.child(imageDataName)
+        let credenrials =  AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
         
-        //MARK:  upload image to FirebaseStore
-        storeRef.putData(imageData, metadata: nil) { (metadata, error) in
-            storeRef.downloadURL { (url, error) in
-                guard let profileImageUrl = url?.absoluteString else {return}
-                
-                Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-                    if let err = err {
-                        print("\(err.localizedDescription)")
-                        return
-                    }
-                    guard let uid = result?.user.uid else {return}
-                    
-                    //MARK:  upload userInfo to database
-                    let userValue = ["email":email,
-                                     "username":username,
-                                     "fullname":fullname,
-                                     "profileImageUrl":profileImageUrl]
-                    
-                    REF_USERS.child(uid).updateChildValues(userValue) { (error, ref) in
-                        if error != nil {
-                            return
-                        }
-                        print("success")
-                    }
-                    
-                }
-                
-                
-            }
+        AuthService.shared.registerUser(credentials: credenrials) { (error, ref) in
+            print("succes")
         }
         
         
