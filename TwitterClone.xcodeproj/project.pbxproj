@@ -16,6 +16,7 @@
 		0029030C2461EF3F00561413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0029030A2461EF3F00561413 /* Main.storyboard */; };
 		0029030E2461EF4500561413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0029030D2461EF4500561413 /* Assets.xcassets */; };
 		002903112461EF4500561413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0029030F2461EF4500561413 /* LaunchScreen.storyboard */; };
+		00C7CBFD246B847F0099DEE3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7CBFC246B847F0099DEE3 /* UserService.swift */; };
 		00C9FCFA2467A7B40000B9DB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C9FCF92467A7B40000B9DB /* AuthService.swift */; };
 		00CA08122461F892004B74AC /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA08112461F892004B74AC /* MainTabController.swift */; };
 		00CA08142461FA5E004B74AC /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CA08132461FA5E004B74AC /* FeedController.swift */; };
@@ -39,6 +40,7 @@
 		0029030D2461EF4500561413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		002903102461EF4500561413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		002903122461EF4500561413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00C7CBFC246B847F0099DEE3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		00C9FCF92467A7B40000B9DB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		00CA08112461F892004B74AC /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		00CA08132461FA5E004B74AC /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				00C9FCF92467A7B40000B9DB /* AuthService.swift */,
+				00C7CBFC246B847F0099DEE3 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C7CBFD246B847F0099DEE3 /* UserService.swift in Sources */,
 				002903052461EF3F00561413 /* AppDelegate.swift in Sources */,
 				00CA081A2461FAE8004B74AC /* ConversationContoller.swift in Sources */,
 				000E843E2466641600E013EC /* Utilities.swift in Sources */,

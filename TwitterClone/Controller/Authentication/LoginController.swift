@@ -81,7 +81,8 @@ class LoginController: UIViewController{
             if let error = error {
                 print(error.localizedDescription ?? "eroor")
             }
-            self.navigationController?.pushViewController(MainTabController(), animated: true)
+            self.navigationController?.setViewControllers([MainTabController()], animated: true)
+            
         }
     }
     

@@ -26,10 +26,11 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        x()
+        //x()
         
         configureViewContoller()
         configureUI()
+        fetchUser()
     }
     
     //MARK: - !!!
@@ -40,6 +41,12 @@ class MainTabController: UITabBarController {
         }catch let error{
             print(error)
         }
+    }
+    
+    //MARK: - API
+    
+    func fetchUser(){
+        UserService.shared.fetchUser()
     }
 
     

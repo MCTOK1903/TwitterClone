@@ -131,6 +131,7 @@ class RegisterController: UIViewController{
         
         AuthService.shared.registerUser(credentials: credenrials) { (error, ref) in
             print("succes")
+            self.navigationController?.setViewControllers([MainTabController()], animated: true)
         }
         
         
