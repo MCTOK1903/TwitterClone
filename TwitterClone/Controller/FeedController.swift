@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FeedController: UIViewController{
-
+    
     //MARK: - Properties
     
+    var user: User? {
+        didSet {
+             configureLeftButButtom()
+        }
+    }
+    
     //MARK: - LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-
+        
     }
     
     //MARK: - Helpers
@@ -32,6 +39,20 @@ class FeedController: UIViewController{
         navigationItem.titleView = imageView
     }
     
+    
+    func configureLeftButButtom() {
+        guard let user = user else {return}
+        
+        let profileImageView = UIImageView()
+        profileImageView.setDimensions(width: 34, height: 34)
+        profileImageView.layer.cornerRadius = 34 / 2
+        profileImageView.layer.masksToBounds = true
+        profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
        
-
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
+        
+    }
+    
+    
 }

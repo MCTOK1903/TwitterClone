@@ -12,6 +12,16 @@ import Firebase
 class MainTabController: UITabBarController {
     
     //MARK: - Properties
+    
+    var user: User? {
+        didSet {
+            //!
+            guard let nav = viewControllers?[0] as? UINavigationController else {return}
+            guard let feed = nav.viewControllers.first as? FeedController else {return}
+            feed.user = self.user
+        }
+    }
+    
     let actionButton : UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -46,7 +56,9 @@ class MainTabController: UITabBarController {
     //MARK: - API
     
     func fetchUser(){
-        UserService.shared.fetchUser()
+        UserService.shared.fetchUser { (user) in
+            self.user = user
+        }
     }
 
     
@@ -74,7 +86,7 @@ class MainTabController: UITabBarController {
         
         let feed = FeedController()
         let feedNavigation = templateNavigationController(image:UIImage(named: "home_unselected"), rootViewController: feed)
-
+        
         let explore = ExploreController()
         let exploreNavigation = templateNavigationController(image: UIImage(named: "search_unselected"), rootViewController: explore)
         
@@ -84,7 +96,9 @@ class MainTabController: UITabBarController {
         let conversations = ConversationContoller()
         let conversationsNavigation = templateNavigationController(image: UIImage(named: "ic_mail_outline_white_2x-1"), rootViewController: conversations)
          
+        // configure tabbar
         viewControllers = [feedNavigation,exploreNavigation,notificationNavigation,conversationsNavigation]
+        
         
     }
     
@@ -96,9 +110,5 @@ class MainTabController: UITabBarController {
             nav.navigationBar.barTintColor = .white
             return nav
     }
-       
-    
-
-    
 
 }
