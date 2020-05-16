@@ -66,7 +66,9 @@ class MainTabController: UITabBarController {
     //MARK: - addNewTweet Button Action 
     
     @objc func addNewTweetTapped(){
-        let nav = UINavigationController(rootViewController: UploadTweetController())
+        guard let user = user else {return}
+        let uploadTweetController = UploadTweetController(user: user)
+        let nav = UINavigationController(rootViewController: uploadTweetController)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
         
