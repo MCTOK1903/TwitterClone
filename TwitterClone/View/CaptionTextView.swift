@@ -45,7 +45,7 @@ class CaptionTextView: UITextView {
     
     
     //MARK: - Selectors
-    
+    // Placeholder is removed when input is entered in textArea
     @objc func handleTextInputChange(){
         placeHolderLabel.isHidden = !text.isEmpty
     }

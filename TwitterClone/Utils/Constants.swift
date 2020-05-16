@@ -10,6 +10,9 @@ import Firebase
 
 let DB_REF = Database.database().reference()
 let REF_USERS = DB_REF.child("users")
+let REF_TWEETS = DB_REF.child("tweets")
+
 
 let STORE_REF = Storage.storage().reference()
 let STORE_PROFILE_IMAGES = STORE_REF.child("profile_images")
+

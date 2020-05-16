@@ -40,8 +40,6 @@ class UploadTweetController: UIViewController {
     }()
     
     private let captionTextView = CaptionTextView()
-    private let captionTextView2 = CaptionTextView()
-    private let captionTextView3 = CaptionTextView()
     //MARK: - LifeCycle
     
     // indirdiğim user bilgilerine ulaşmak için kullanıyorum.
@@ -68,7 +66,13 @@ class UploadTweetController: UIViewController {
     }
     
     @objc func handleUploadTweet(){
-        print("DEBUG: everything okey ?")
+        guard let caption = captionTextView.text else {return}
+        TweetService.shared.uploadTweet(caption: caption) { (error, ref) in
+            if let error = error {
+                print("DEBUG: \(error)")
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
