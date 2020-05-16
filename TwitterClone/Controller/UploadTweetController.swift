@@ -39,7 +39,9 @@ class UploadTweetController: UIViewController {
         return iv
     }()
     
-    
+    private let captionTextView = CaptionTextView()
+    private let captionTextView2 = CaptionTextView()
+    private let captionTextView3 = CaptionTextView()
     //MARK: - LifeCycle
     
     // indirdiğim user bilgilerine ulaşmak için kullanıyorum.
@@ -53,7 +55,7 @@ class UploadTweetController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad( )
         
         configureUI()
         
@@ -78,9 +80,15 @@ class UploadTweetController: UIViewController {
         
         configureNavigationBar()
         
-        view.addSubview(profileImageView)
-        profileImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
+        let stack = UIStackView(arrangedSubviews: [profileImageView,captionTextView])
+        stack.axis = .horizontal
+        stack.spacing = 12
+        
+        view.addSubview(stack)
+        stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor ,paddingTop: 16, paddingLeft: 16, paddingRight: 16)
+
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
+        
         
         
     }
