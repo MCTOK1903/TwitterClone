@@ -9,13 +9,15 @@
 import UIKit
 import SDWebImage
 
-class FeedController: UIViewController{
+let reuseIdentifier = "TweetCell"
+
+class FeedController: UICollectionViewController{
     
     //MARK: - Properties
     
     var user: User? {
         didSet {
-             configureLeftButButtom()
+            configureLeftButButtom()
         }
     }
     
@@ -28,6 +30,7 @@ class FeedController: UIViewController{
         fetchTweets()
         
     }
+    
     
     //MARK: - API
     
@@ -42,7 +45,8 @@ class FeedController: UIViewController{
     
     func configureUI(){
         
-        view.backgroundColor = .white
+        collectionView.backgroundColor = .white
+        collectionView.register(TweetCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
@@ -59,11 +63,38 @@ class FeedController: UIViewController{
         profileImageView.layer.cornerRadius = 34 / 2
         profileImageView.layer.masksToBounds = true
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
-       
+        
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
         
     }
     
+    //MARK: - initialized with a non-nil layout parameter
+    init() {
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension FeedController {
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TweetCell
+        return cell
+    }
+}
+
+extension FeedController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 200)
+    }
 }
