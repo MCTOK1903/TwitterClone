@@ -36,7 +36,7 @@ class FeedController: UICollectionViewController{
     
     func fetchTweets(){
         TweetService.shared.fetchTweets { tweets in
-            print("DEBUD: tweets: \(tweets)")
+            //print("DEBUD: tweets: \(tweets)")
         }
     }
     
@@ -70,6 +70,7 @@ class FeedController: UICollectionViewController{
     }
     
     //MARK: - initialized with a non-nil layout parameter
+    // bu olmadığı zaman CollectionVC çalışmaz
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -95,6 +96,6 @@ extension FeedController {
 extension FeedController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width, height: 100)
     }
 }
