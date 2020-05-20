@@ -34,7 +34,7 @@ struct TweetService {
         
         var tweets = [Tweet]()
         
-        REF_TWEETS.observe(.childAdded) { (snapshot) in
+        REF_TWEETS.queryOrdered(byChild: "timestamp").observe(.childAdded) { (snapshot) in
             guard let dictionary = snapshot.value as? [String:Any] else {return}
             guard let uid = dictionary["uid"] as? String else {return}
             let tweetID = snapshot.key
