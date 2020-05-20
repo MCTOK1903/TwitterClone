@@ -30,6 +30,47 @@ class TweetCell : UICollectionViewCell{
         return label
     }()
     
+    
+    private lazy var commentButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "comment"), for: .normal)
+        button.tintColor = .gray
+        button.setDimensions(width: 20, height: 20)
+        button.addTarget(self, action: #selector(handleCommentTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var retweetButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "retweet"), for: .normal)
+        button.tintColor = .gray
+        button.setDimensions(width: 20, height: 20)
+        button.addTarget(self, action: #selector(handleRetweetTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var likeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "like"), for: .normal)
+        button.tintColor = .gray
+        button.setDimensions(width: 20, height: 20)
+        button.addTarget(self, action: #selector(handleLikeTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "share"), for: .normal)
+        button.tintColor = .gray
+        button.setDimensions(width: 20, height: 20)
+        button.addTarget(self, action: #selector(handleShareTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    
+    
+    
     private let infoLabel = UILabel()
     
     
@@ -49,6 +90,23 @@ class TweetCell : UICollectionViewCell{
     
     //MARK: - Selecttors
     
+    @objc func handleCommentTapped(){
+        
+    }
+    
+    @objc func handleRetweetTapped(){
+        
+    }
+    
+    @objc func handleLikeTapped(){
+        
+    }
+    
+    @objc func handleShareTapped(){
+        
+    }
+    
+    
     //MARK: - Helpers
     
     
@@ -56,7 +114,7 @@ class TweetCell : UICollectionViewCell{
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: leftAnchor,
-                                paddingTop: 12, paddingLeft: 12)
+                                paddingTop: 8, paddingLeft: 12)
         
         infoLabel.text = "selam2"
         
@@ -64,11 +122,20 @@ class TweetCell : UICollectionViewCell{
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = 4
-    
+        
         addSubview(stack)
         stack.anchor(top: profileImageView.topAnchor, left: profileImageView.rightAnchor,
                      right: rightAnchor, paddingLeft: 12, paddingRight: 12)
         
+        let actionStack = UIStackView(arrangedSubviews: [commentButton,retweetButton,
+                                                         likeButton,shareButton])
+        actionStack.axis = .horizontal
+        actionStack.distribution = .fillEqually
+        
+        addSubview(actionStack)
+        actionStack.centerX(inView: self)
+        actionStack.anchor(left: leftAnchor,bottom: bottomAnchor, right:rightAnchor,
+                           paddingLeft: 20,paddingBottom: 8, paddingRight: 20)
         
         let underLine = UIView()
         underLine.backgroundColor = .systemGroupedBackground
