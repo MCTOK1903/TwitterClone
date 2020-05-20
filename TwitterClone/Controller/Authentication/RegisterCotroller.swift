@@ -120,12 +120,13 @@ class RegisterController: UIViewController{
         
     }
     
+    //MARK: Register
     @objc func SignUpTapped(){
         guard let profileImage = profileImage else {return}
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let fullname = fullNameTextField.text else {return}
-        guard let username = userNameTextField.text else {return}
+        guard let username = userNameTextField.text?.lowercased() else {return}
         
         let credenrials =  AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
         

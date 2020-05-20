@@ -73,10 +73,6 @@ class TweetCell : UICollectionViewCell{
         return button
     }()
     
-    
-    
-    
-    
     private let infoLabel = UILabel()
     
     
@@ -151,13 +147,15 @@ class TweetCell : UICollectionViewCell{
         
     }
     
+    
     func configureTweet(){
         guard let tweet = tweet else {return}
         
-        captionLabel.text = tweet.caption
+        let tweetViewModel = TweetViewModel(tweet: tweet)
         
-        profileImageView.sd_setImage(with: tweet.user.profileImageUrl)
-        infoLabel.text = tweet.user.username
+        profileImageView.sd_setImage(with: tweetViewModel.profileImageUrl)
+        captionLabel.text = tweet.caption
+        infoLabel.attributedText = tweetViewModel.userInfoText
     }
     
     
