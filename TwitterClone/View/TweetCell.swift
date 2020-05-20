@@ -12,6 +12,12 @@ class TweetCell : UICollectionViewCell{
     
     //MARK: - Properties
     
+    var tweet: Tweet? {
+        didSet {
+            configureTweet()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
@@ -143,6 +149,14 @@ class TweetCell : UICollectionViewCell{
         underLine.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 1)
         
         
+    }
+    
+    func configureTweet(){
+        guard let tweet = tweet else {return}
+        
+        captionLabel.text = tweet.caption
+        
+        //profileImageView.sd_setImage(with: tweet, completed: <#T##SDExternalCompletionBlock?##SDExternalCompletionBlock?##(UIImage?, Error?, SDImageCacheType, URL?) -> Void#>)
     }
     
     
