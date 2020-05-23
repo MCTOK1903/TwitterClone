@@ -43,7 +43,7 @@ struct TweetService {
                 
                 let tweet = Tweet(user: user, tweetId: tweetID, dictionary: dictionary)
                 tweets.append(tweet)
-                completion(tweets)
+                completion(tweets.reversed())
             }
         }
         

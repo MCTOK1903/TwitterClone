@@ -18,13 +18,18 @@ class TweetCell : UICollectionViewCell{
         }
     }
     
-    private let profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.clipsToBounds = true
         iv.backgroundColor = .twitterBlue
         iv.setDimensions(width: 48, height: 48)
         iv.layer.cornerRadius = 48/2
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleProfilImageTapped))
+        iv.addGestureRecognizer(tapGR)
+        iv.isUserInteractionEnabled = true
+        
         return iv
     }()
     
@@ -108,6 +113,10 @@ class TweetCell : UICollectionViewCell{
         
     }
     
+    @objc func handleProfilImageTapped(){
+        print("DEBUG: tap GR")
+    }
+    
     
     //MARK: - Helpers
     
@@ -157,6 +166,8 @@ class TweetCell : UICollectionViewCell{
         captionLabel.text = tweet.caption
         infoLabel.attributedText = tweetViewModel.userInfoText
     }
+    
+    
     
     
 }
