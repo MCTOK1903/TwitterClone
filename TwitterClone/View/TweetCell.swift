@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+protocol TweetCellDelegate: class {
+    func handleProfileImageTapped()
+}
+
+
 class TweetCell : UICollectionViewCell{
     
     //MARK: - Properties
@@ -17,6 +23,8 @@ class TweetCell : UICollectionViewCell{
             configureTweet()
         }
     }
+    
+    weak var delegate: TweetCellDelegate?
     
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
@@ -114,7 +122,8 @@ class TweetCell : UICollectionViewCell{
     }
     
     @objc func handleProfilImageTapped(){
-        print("DEBUG: tap GR")
+        print("DEBUG: tweetcell icersindeki handleprogileimage calisti.....")
+        delegate?.handleProfileImageTapped()
     }
     
     

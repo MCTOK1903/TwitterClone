@@ -99,6 +99,7 @@ extension FeedController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TweetCell
         print("DEBUG: \(indexPath.row)")
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         return cell
     }
 }
@@ -109,5 +110,15 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 120)
+    }
+}
+
+//MARK: - TweeCellDelegate
+
+extension FeedController: TweetCellDelegate {
+    func handleProfileImageTapped() {
+        print("DEBUG: Feed coontroller icerisindeki extention calisti......")
+        let controlller = ProfileController(collectionViewLayout: UICollectionViewLayout())
+        navigationController?.pushViewController(controlller, animated: true)
     }
 }
