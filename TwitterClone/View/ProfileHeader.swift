@@ -12,6 +12,8 @@ class ProfileHeader: UICollectionReusableView {
     
     //MARK: - Properties
     
+    private let filterBar = ProfileFilterView()
+    
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "baseline_arrow_back_white_24dp"), for: .normal)
@@ -121,6 +123,10 @@ class ProfileHeader: UICollectionReusableView {
         addSubview(userInfoStack)
         userInfoStack.anchor(top:profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor,
                              paddingTop: 8, paddingLeft: 12, paddingRight: 12)
+        
+        addSubview(filterBar)
+        filterBar.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 35)
+        filterBar.backgroundColor = .white
         
     }
     
