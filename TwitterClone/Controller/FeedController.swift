@@ -41,6 +41,7 @@ class FeedController: UICollectionViewController{
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.isHidden = false
     }
     
     
