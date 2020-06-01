@@ -123,9 +123,9 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 //MARK: - TweeCellDelegate
 
 extension FeedController: TweetCellDelegate {
-    func handleProfileImageTapped() {
-        print("DEBUG: Feed coontroller icerisindeki extention calisti......")
-        let controlller = ProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+    func handleProfileImageTapped(_ cell: TweetCell) {
+        guard let user = cell.tweet?.user else {return }
+        let controlller = ProfileController(user: user)
         navigationController?.pushViewController(controlller, animated: true)
     }
 }
