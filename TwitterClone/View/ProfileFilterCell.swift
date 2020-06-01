@@ -12,6 +12,12 @@ class ProfileFilterCell: UICollectionViewCell {
     
     //MARK: - Properties
     
+    var option : ProfileFilterOptions! {
+        didSet{
+            titleLable.text = option.description
+        }
+    }
+    
     let titleLable: UILabel = {
         let label = UILabel()
         
@@ -22,6 +28,8 @@ class ProfileFilterCell: UICollectionViewCell {
         return label
     }()
     
+    
+        
     override var isSelected: Bool{
         didSet {
             titleLable.font = isSelected ? UIFont.boldSystemFont(ofSize: 16) : UIFont.systemFont(ofSize: 14)

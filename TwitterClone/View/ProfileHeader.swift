@@ -136,7 +136,8 @@ class ProfileHeader: UICollectionReusableView {
         filterBar.backgroundColor = .white
         
         addSubview(underline)
-        underline.anchor(left:leftAnchor, bottom: bottomAnchor, width: frame.width / 3, height: 3)
+        let count = CGFloat(ProfileFilterOptions.allCases.count)
+        underline.anchor(left:leftAnchor, bottom: bottomAnchor, width: frame.width / count, height: 3)
         
     }
     
