@@ -122,7 +122,6 @@ class TweetCell : UICollectionViewCell{
     }
     
     @objc func handleProfilImageTapped(){
-        print("DEBUG: tweetcell icersindeki handleprogileimage calisti.....")
         delegate?.handleProfileImageTapped()
     }
     

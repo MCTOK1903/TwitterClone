@@ -87,6 +87,11 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
+    private let underline: UIView = {
+        let view  = UIView()
+        view.backgroundColor = .twitterBlue
+        return view
+    }()
     
     
     
@@ -97,6 +102,8 @@ class ProfileHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        filterBar.delegate = self
         
         addSubview(containerview)
         containerview.anchor(top:topAnchor, left: leftAnchor,right: rightAnchor, height: frame.height * 0.40)
@@ -128,6 +135,9 @@ class ProfileHeader: UICollectionReusableView {
         filterBar.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 35)
         filterBar.backgroundColor = .white
         
+        addSubview(underline)
+        underline.anchor(left:leftAnchor, bottom: bottomAnchor, width: frame.width / 3, height: 3)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -143,5 +153,19 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     @objc func handleEditProfileFollow(){
+    }
+}
+
+//MARK: -  ProfileFilterViewDelegate
+
+extension ProfileHeader: ProfileFilterViewDelegate {
+    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath) {
+        guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else {return}
+        
+        let xPostion = cell.frame.origin.x
+        UIView.animate(withDuration: 0.3) {
+            self.underline.frame.origin.x = xPostion
+        }
+        
     }
 }
