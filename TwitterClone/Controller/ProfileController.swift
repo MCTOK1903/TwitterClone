@@ -31,8 +31,6 @@ class ProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        
-        print("DEBUG: user is \(user?.username)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

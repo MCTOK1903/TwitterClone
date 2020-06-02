@@ -34,7 +34,13 @@ struct ProfuleHeaderViewModel {
         return attributedText(withValue: 2, text: " Following")
     }
     
-    
+    var actionButtonTitle: String {
+        if user.isCurrentUser {
+            return "Edit Profile"
+        }else {
+            return "Follow"
+        }
+    }
     
     init(user: User){
         self.user = user

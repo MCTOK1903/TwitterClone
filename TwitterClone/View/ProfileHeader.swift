@@ -18,6 +18,7 @@ class ProfileHeader: UICollectionReusableView {
         }
     }
     
+    
     private let filterBar = ProfileFilterView()
     
     private lazy var backButton: UIButton = {
@@ -46,6 +47,7 @@ class ProfileHeader: UICollectionReusableView {
         iv.backgroundColor = .lightGray
         iv.layer.borderColor = UIColor.white.cgColor
         iv.layer.borderWidth = 4
+        iv.contentMode = .scaleToFill
         
         return iv
     }()
@@ -208,6 +210,10 @@ class ProfileHeader: UICollectionReusableView {
         guard let user = user else {return}
         
         let viewModel = ProfuleHeaderViewModel(user: user)
+        
+        profileImageView.sd_setImage(with: user.profileImageUrl)
+        
+        editProfileFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
         
         followersLabel.attributedText = viewModel.followersString
         followingLabel.attributedText = viewModel.followingString
