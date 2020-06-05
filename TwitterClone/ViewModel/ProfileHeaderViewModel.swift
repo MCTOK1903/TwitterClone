@@ -26,6 +26,8 @@ struct ProfuleHeaderViewModel {
     
     private let user: User
     
+    var usernametext: String
+    
     var followersString: NSAttributedString? {
         return attributedText(withValue: 0, text: " Followers")
     }
@@ -44,6 +46,7 @@ struct ProfuleHeaderViewModel {
     
     init(user: User){
         self.user = user
+        self.usernametext = "@" + user.username
     }
     
     fileprivate func attributedText(withValue value: Int, text: String) -> NSAttributedString {

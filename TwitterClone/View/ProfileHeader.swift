@@ -73,7 +73,6 @@ class ProfileHeader: UICollectionReusableView {
     private let fullNameLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "deneme 1"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         
         return label
@@ -82,7 +81,6 @@ class ProfileHeader: UICollectionReusableView {
     private let userNameLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "@deneme 1"
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .lightGray
         
@@ -92,7 +90,6 @@ class ProfileHeader: UICollectionReusableView {
     private let bioLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "deneme 1"
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.numberOfLines = 3
         label.text = "heyyo suprise m f heyyo suprise m f heyyo suprise m f heyyo suprise m f heyyo suprise m f "
@@ -221,6 +218,9 @@ class ProfileHeader: UICollectionReusableView {
         
         followersLabel.attributedText = viewModel.followersString
         followingLabel.attributedText = viewModel.followingString
+        
+        fullNameLabel.text = user.fullname
+        userNameLabel.text = viewModel.usernametext
         
         
     }
