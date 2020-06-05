@@ -12,7 +12,6 @@ protocol ProfileHeaderDelegate: class {
     func handleDismissal()
 }
 
-
 class ProfileHeader: UICollectionReusableView {
     
     //MARK: - Properties

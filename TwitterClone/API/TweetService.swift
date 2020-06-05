@@ -24,7 +24,12 @@ struct TweetService {
                       "retweets": 0 ,
                       "caption": caption] as [String: Any]
         
-        REF_TWEETS.childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+        let ref = REF_TWEETS.childByAutoId()
+        
+        ref.updateChildValues(values) { (error, ref) in
+            guard let TweetID = ref.key else { return }
+            REF_USER_TWEETS.child(uid).updateChildValues([TweetID: 1], withCompletionBlock: completion)
+        }
     }
     
     
