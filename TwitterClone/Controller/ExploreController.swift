@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ExploreController: UIViewController {
+private let reuseIdentifierUserCell = "UserCell"
+
+class ExploreController: UITableViewController {
     
     //MARK: - Properties
     
@@ -26,7 +28,24 @@ class ExploreController: UIViewController {
     func configureUI(){
         view.backgroundColor = .white
         navigationItem.title = "Explore"
+        
+        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifierUserCell)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 60
+        
     }
     
     
+}
+
+extension ExploreController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierUserCell, for: indexPath) as! UserCell
+        
+        return cell
+    }
 }
